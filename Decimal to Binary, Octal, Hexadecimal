@@ -1,0 +1,160 @@
+#include<stdio.h>
+#include<math.h>
+#include<string.h>
+
+void dec_to_bin(int n)
+{
+    int i=0,a[20];
+    while(n>0)
+    {
+        a[i] = n%2;
+        n /= 2;
+        i++;
+    }
+    for(i=i-1;i>=0;i--)
+        printf("%d",a[i]);
+    printf("\n\n");
+}
+
+void bin_to_dec(long long int n)
+{
+    int rem,sum=0,i=0;
+    while(n!=0)
+    {
+        rem = n%10;
+        sum += rem * pow(2,i);
+        n /= 10;
+        i++;
+    }
+    printf("%d\n\n",sum);
+}
+
+void dec_to_oct(int n)
+{
+    int i=0,a[20];
+    while(n!=0)
+    {
+        a[i] = n%8;
+        n /= 8;
+        i++;
+    }
+    for(i=i-1;i>=0;i--)
+        printf("%d",a[i]);
+    printf("\n\n");
+}
+
+void oct_to_dec(int n)
+{
+    int rem,sum=0,i=0;
+    while(n!=0)
+    {
+        rem = n%10;
+        sum += rem * pow(8,i);
+        n /= 10;
+        i++;
+    }
+    printf("%d\n\n",sum);
+}
+
+void dec_to_hex(int n)
+{
+    int i=0,rem;
+    char a[20];
+    while(n!=0)
+    {
+        rem = n%16;
+        if(rem>=0 && rem<=9)
+            a[i] = rem + 48;
+        else
+            a[i] = rem + 55;
+        n /= 16;
+        i++;
+    }
+    for(i=i-1;i>=0;i--)
+        printf("%c",a[i]);
+    printf("\n\n");
+}
+
+void hex_to_dec(char a[20])
+{
+    int sum=0,i,m=0;
+    for(i=strlen(a)-1;i>=0;i--)
+    {
+        if(a[i]>=48 && a[i]<=57)
+        {
+            sum += (a[i]-48) * pow(16,m);
+            m++;
+        }
+        else if(a[i]>=65 && a[i]<=70)
+        {
+            sum += (a[i]-55) * pow(16,m);
+            m++;
+        }
+    }
+    printf("%d\n\n",sum);
+}
+
+int main()
+{
+    int n,choice;
+    char a[20];
+    long long int b;
+    while(1)
+    {
+        printf("MENU\n----\n");
+        printf("1.Decimal to Binary\n2.Binary to Decimal\n3.Decimal to Octal\n4.Octal to Decimal\n5.Decimal to Hexadecimal\n");
+        printf("6.Hexadecimal to Decimal\n7.Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1:
+                printf("Enter the Decimal number: ");
+                scanf("%d",&n);
+                if(n<0)
+                    printf("%d cannot be converted into Binary\n\n",n);
+                else if(n==0)
+                    printf("0 in Binary is: 0\n\n");
+                else
+                {
+                    printf("%d in Binary is: ",n);
+                    dec_to_bin(n);
+                }
+                break;
+            case 2:
+                printf("Enter the Binary number: ");
+                scanf("%lld",&b);
+                printf("%lld in Decimal is: ",b);
+                bin_to_dec(b);
+                break;
+            case 3:
+                printf("Enter the Decimal number: ");
+                scanf("%d",&n);
+                printf("%d in Octal is: ",n);
+                dec_to_oct(n);
+                break;
+            case 4:
+                printf("Enter the Octal number: ");
+                scanf("%d",&n);
+                printf("%d in Decimal is: ",n);
+                oct_to_dec(n);
+                break;
+            case 5:
+                printf("Enter the Decimal number: ");
+                scanf("%d",&n);
+                printf("%d in Hexadecimal is: ",n);
+                dec_to_hex(n);
+                break;
+            case 6:
+                printf("Enter the Hexadecimal number: ");
+                scanf("%s",a);
+                printf("%s in Decimal is: ",a);
+                hex_to_dec(a);
+                break;
+            case 7:
+                return 0;
+            default:
+                printf("Invalid input!!!\n");
+        }
+    }
+}
