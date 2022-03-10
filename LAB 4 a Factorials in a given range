@@ -1,0 +1,24 @@
+#include <stdio.h>
+int fact(int n)
+{
+    int i,fact=1;
+    for(i=n;i>1;i--)
+        fact = fact*i;
+    return fact;
+}
+
+int main()
+{
+	int i=1,a,b;
+	printf("Enter the range: ");
+	scanf("%d %d",&a,&b);
+	printf("The numbers whose factorials are between %d and %d are:\n",a,b);
+	while(1)
+	{
+	    if(fact(i)>a && fact(i)<b)
+            printf("%d\n",i);
+        if(fact(i)>b)
+            break;
+        i++;
+	}
+}
