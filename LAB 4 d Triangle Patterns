@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+int main()
+{
+	int i, j,n;
+	printf("Enter number of rows to print: ");
+	scanf("%d",&n);
+	
+	printf("Pattern 1 :\n");
+	for(i=1;i<=n;i++)
+	{
+		for(j=1;j<=i;j++)
+		       printf("* ");
+		printf("\n");
+	}
+
+	printf("\nPattern 2:\n");
+	for(i=1;i<=n;i++)
+	{
+		for(j=n;j>=i;j--)
+			printf("* ");
+		printf("\n");
+	}
+
+	printf("\nPattern 3:\n");
+	for(i=1;i<=n;i++)
+	{
+		for(j=1;j<=n;j++)
+		{
+			if(j>=i)
+				printf("* ");
+			else
+				printf("  ");
+		}
+		printf("\n");
+	}
+	
+	printf("\nPattern 4:\n");
+	for(i=1;i<=n;i++)
+	{
+		for(j=i;j<n;j++)
+			printf("  ");
+		for(j=1;j<=i;j++)
+			printf("* ");
+		printf("\n");
+	}
+}
