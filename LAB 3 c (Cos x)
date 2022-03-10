@@ -1,0 +1,17 @@
+#include<stdio.h>
+
+int main()
+{   
+    int i, n,temp;
+    float x, sum=1, term=1;
+    printf("Enter the angle in degrees: ");
+    scanf("%f",&x);
+    temp = x;
+    x=x*3.14159/180;
+    for(i=1;i<=10;i++)
+    {
+        term = -1*(term*x*x)/((2*i) * (2*i-1));
+        sum += term;
+    }
+    printf("Cos %d = %f", temp, sum);
+}
