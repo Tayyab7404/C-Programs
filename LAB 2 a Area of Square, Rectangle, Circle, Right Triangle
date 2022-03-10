@@ -1,0 +1,57 @@
+#include<stdio.h>
+int main()
+{
+    int choice;
+    float a,l,b,h,r,area,perimeter;
+    
+    while(1)
+    {
+        printf("MENU\n----\n");
+        printf("1.Square\n2.Rectangle\n3.Circle\n4.Right Triangle\n5.Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d",&choice);
+        
+        switch(choice)
+        {
+            case 1:
+            printf("Enter the side of the Square: ");
+            scanf("%f",&a);
+            perimeter = 4*a;
+            area = a*a;
+            printf("Area = %f sq.units\n",area);
+            printf("Perimeter = %f units\n\n",perimeter);
+            break;
+            
+            case 2:
+            printf("Enter the length and breadth of the Rectangle:");
+            scanf("%f %f",&l,&b);
+            area = l*b;
+            perimeter = 2*(l+b);
+            printf("Area = %f sq.units\n",area);
+            printf("Perimeter = %f units\n\n",perimeter);
+            break;
+            
+            case 3:
+            printf("Enter the radius of the Circle:");
+            scanf("%f",&r);
+            area = 3.1415926*r*r;
+            perimeter = 2*3.1415926*r;
+            printf("Area = %f sq.units\n",area);
+            printf("Circumference = %f units\n\n",perimeter);
+            break;
+            
+            case 4:
+            printf("Enter the base and height of the Triangle:");
+            scanf("%f %f",&b,&h);
+            area = 0.5*b*h;
+            printf("Area = %f sq.units\n\n",area);
+            break;
+            
+            case 5:
+            return 0;
+            
+            default:
+            printf("Invalid input!!!\n");
+        }
+    }
+}
