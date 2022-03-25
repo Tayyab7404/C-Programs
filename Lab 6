@@ -1,0 +1,101 @@
+#include <stdio.h>
+#include <math.h>
+
+void sort(int a[10],int n);
+float mean(int a[10], int n);
+float median(int a[10],int n);
+float variance(int a[10],int n);
+float SD(int a[10],int n);
+
+int main()
+{
+	int a[10],n,ch;
+	float m,med,var,sd;
+	printf("Enter the number of elements to read: ");
+	scanf("%d", &n);
+	printf("Enter the %d elements: ",n);
+	for (int i = 0; i < n; ++i)
+		scanf("%d", &a[i]);
+		
+	while(1)
+	{
+		printf("1.Mean\n2.Median\n3.Variance\n4.Standard Deviation\n5.Quit\n");
+		printf("Enter your choice: ");
+		scanf("%d", &ch);
+		
+		switch(ch)
+		{
+			case 1:
+				m = mean(a,n);
+				printf("Mean = %f\n",m);
+				break;
+			case 2:
+				med = median(a,n);
+				printf("Median = %f\n",med);
+				break;
+			case 3:
+				var = variance(a,n);
+				printf("Variance = %f\n",var);
+				break;
+			case 4:
+				sd = SD(a,n);
+				printf("Standard Deviation = %f\n",sd);
+				break;
+			case 5:
+				return 0;
+				break;
+			default:
+				printf("Invalid Input!!\n");
+		}
+	}
+}
+
+float mean(int a[10], int n)
+{
+	float sum = 0;
+	int i;
+	for (i=0;i<n;i++)
+		sum += a[i];
+	sum /= n;
+	return sum;
+}
+
+float median(int a[10], int n)
+{
+	float median;
+	sort(a, n);
+	if (n % 2 == 0)
+		median = (a[n/2] + a[n/2-1])/2.0;
+	else
+		median = a[n/2];
+	return median;	
+}
+
+float variance(int a[10], int n)
+{
+	float sum=0,m,avg;
+	int i;
+	m = mean(a,n);
+    for(i=0;i<n;i++)
+        sum += (a[i]-m)*(a[i]-m);
+    avg = sum/n;
+	return avg;
+}
+
+float SD(int a[10],int n)
+{
+	return sqrt(variance(a, n));
+}
+
+void sort(int a[10], int n)
+{
+	int i,j,temp;
+	for(i=0;i<n-1;i++)
+	    for(j=0;j<n-i-1;j++)
+	        if(a[j]>a[j+1])
+	        {
+	            temp = a[j];
+	            a[j] = a[j+1];
+	            a[j+1] = temp;
+	        }
+}
